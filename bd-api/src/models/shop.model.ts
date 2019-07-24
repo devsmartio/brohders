@@ -1,8 +1,8 @@
-import { Entity, model, property, hasMany } from '@loopback/repository';
-import { Tasting } from './tasting.model';
-import { TastingIncrease } from './tasting-increase.model';
-import { Shelve } from './shelve.model';
-import { Sale } from './index';
+import {Entity, model, property, hasMany} from '@loopback/repository';
+import {Tasting} from './tasting.model';
+import {TastingIncrease} from './tasting-increase.model';
+import {Shelve} from './shelve.model';
+import {Sale} from './index';
 
 @model()
 export class Shop extends Entity {
@@ -19,7 +19,7 @@ export class Shop extends Entity {
   name: string;
 
   @property({
-    type: 'number'
+    type: 'number',
   })
   clientid: number;
 
@@ -41,24 +41,29 @@ export class Shop extends Entity {
   description?: string;
 
   @hasMany(() => Tasting, {
-    keyTo: 'shopid'
+    keyTo: 'shopid',
   })
-  tastings?: Tasting[]
+  tastings?: Tasting[];
 
   @hasMany(() => TastingIncrease, {
-    keyTo: 'shopid'
+    keyTo: 'shopid',
   })
-  tastingIncreases?: TastingIncrease[]
+  tastingIncreases?: TastingIncrease[];
 
   @hasMany(() => Shelve, {
-    keyTo: 'shopid'
+    keyTo: 'shopid',
   })
-  shelves?: Shelve[]
+  shelves?: Shelve[];
 
   @hasMany(() => Sale, {
-    keyTo: 'shopid'
+    keyTo: 'shopid',
   })
-  sales?: Sale[]
+  sales?: Sale[];
+
+  @property({
+    type: 'number',
+  })
+  user-shopid: number;
 
   constructor(data?: Partial<Shop>) {
     super(data);
